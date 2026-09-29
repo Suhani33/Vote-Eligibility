@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vote Validator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.25),
+                rgba(0, 0, 0, 0.25)),
+                url("vote-bg.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 400px;
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.90);
+
+            border-radius: 25px;
+
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #123b75;
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .input-box span {
+            position: absolute;
+            left: 15px;
+            top: 13px;
+            font-size: 20px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+
+            font-size: 16px;
+            outline: none;
+
+            background: white;
+        }
+
+        input:focus,
+        select:focus {
+            border: 2px solid #1769d1;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: #1769d1;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0d4fa8;
+            transform: scale(1.02);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            display: none;
+        }
+
+        .eligible {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .not-eligible {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .error {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                width: 90%;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="icon">🗳️</div>
+
+        <h1>Vote Validator</h1>
+
+        <p class="subtitle">
+            Check your voting eligibility
+        </p>
+
+        <form onsubmit="checkEligibility(event)">
+
+            <!-- Name -->
+            <div class="input-box">
+
+                <span>👤</span>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <!-- Age -->
+            <div class="input-box">
+
+                <span>🎂</span>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter your age"
+                    min="1"
+                >
+
+            </div>
+
+
+            <!-- Country -->
+            <div class="input-box">
+
+                <span>🌐</span>
+
+                <select id="country">
+
+                    <option value="">Select your country</option>
+
+                    <option value="India">🇮🇳 India</option>
+                    <option value="USA">🇺🇸 United States</option>
+                    <option value="UK">🇬🇧 United Kingdom</option>
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="France">🇫🇷 France</option>
+                    <option value="Japan">🇯🇵 Japan</option>
+                    <option value="China">🇨🇳 China</option>
+                    <option value="Brazil">🇧🇷 Brazil</option>
+                    <option value="Other">🌍 Other</option>
+
+                </select>
+
+            </div>
+
+
+            <button type="submit">
+                Check Eligibility
+            </button>
+
+        </form>
+
+
+        <div id="result"></div>
+
+
+        <p class="footer">
+            Your vote is your voice 🇮🇳
+        </p>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
